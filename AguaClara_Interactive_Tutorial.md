@@ -1,4 +1,5 @@
 # AguaClara Interactive Tutorial
+# Jillian Whiting
 The aim of this interactive tutorial is to get you acclimated to working out of a Markdown, or `.md`, file. Markdown is a markup language with plain text formatting that has a lot of functionality. Some of the benefits of working out of markdown include the ability to write text, create charts, write functioning code in a whole bunch of languages, and render LaTeX equations. Markdown gives you all the functionality of a Jupyter Notebook. Despite this, there isn't a clean way to directly convert a `.ipynb` file to a `.md` file, meaning there's no way to easily convert between the two files.
 
 This tutorial will go over how to write in Markdown, how to code in Python, how to run your code using Hydrogen, and how to use Teletype and GitHub in Atom.
@@ -17,8 +18,7 @@ You can find a GitHub tutorial [here](https://github.com/AguaClara/aguaclara_tut
 1. Below this, write a sentence or two about yourself:
 
 <!--- Fill you answer here. --->
-
-
+I'm Jillian Whiting and this is my sixth semester on AguaClara.
 
 
 ## Headers
@@ -40,9 +40,12 @@ To signify a header, use `#`. The more `#` you use, the smaller the header gets.
 ##### Header 5
 ###### Header 6
 
+
 1. Make a header of similar size as Header 3 with whatever text you want:
 
 <!--- Fill you answer here. --->
+
+### Look I made a Header
 
 ## Emphasis
 There are several different ways to emphasize text: *italics*, **bold**, ***combined***, and ~~strikethrough~~.
@@ -55,8 +58,10 @@ There are several different ways to emphasize text: *italics*, **bold**, ***comb
 1. Write 4 of your favorite words using each type of emphasis:
 
 <!--- Fill you answer here. --->
-
-
+*food*
+**Pizza**
+***chicken***
+~~boo~~
 ## Lists
 Lists are very easy to do. For a bulleted list, use the asterisk and for a numbered list, use the number followed by a period. Hitting `Enter` after a bullet or number continues the list automatically. Hitting `Enter` followed by `Tab` gets you a sub item for a bulleted list. For example:
 
@@ -67,6 +72,11 @@ Lists are very easy to do. For a bulleted list, use the asterisk and for a numbe
 1. Now try it out for yourself. Write down a list of things you hope to achieve this semester, and elaborate on them with sub items:
 
 <!--- Fill you answer here. --->
+Semester Goals
+* Understand the kinetics and flow pattern of a trickling filter
+  - find areas or improvement
+  - propose solutions for areas of improvement
+* Build prototype models to test our solutions.
 
 ## Images
 To input images, you'll either need an image URL or a file path to your image. For AguaClara work, your repository should have a folder for images where you can get an image URL from. In this tutorial, I've made an image folder with a picture in the `aguaclara_tutorial` repository.
@@ -91,9 +101,8 @@ Image with Height and Width Adjusted:
 
 <!--- Fill you answer here. --->
 
-
-
-
+![MyCat](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/IMG_0009.jpg?raw=true)
+<img src="https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/IMG_0009.jpg?raw=true" height=500 width=400>
 
 ## Links
 You can also link text to a webpage. For example, I've inserted a link [here](http://aguaclara.cee.cornell.edu) to the AguaClara website.
@@ -103,7 +112,7 @@ To insert a link, all you have to do is enclose your linked text in `[]` followe
 1. Below, write a sentence describing your major, and insert a link to your major's department website.
 
 <!--- Fill you answer here. --->
-
+I'm an [environmental engineer](http://www.cee.cornell.edu/)!
 ## Tables
 Tables in Markdown are slightly harder, but there's an automatic function that allows to you make one easily. When working in a `.md` file, all you have to do is type `table` and hit enter. It will initialize a 2 by 2 table, but you can easily increase the width by going to the last column and hitting `Tab` or it's height by clicking in any cell and hitting `Enter`. Notice in the example how the text below the header is justified left, center, and right. This is due to the line below the header. A line with a colon on the far left of the dashes only indicates left justified, colons on both sides of the dashes indicates centered, and a colon on the far right of the dashes indicates right justified.
 
@@ -133,7 +142,11 @@ When making tables, it's not important that the lines match up. For example, the
 1. Create a table listing your 3 favorite animals, foods, books, and places on campus. Try out the different cell justifications:
 
 <!--- Fill you answer here. --->
-
+| Animals | Foods           | Books (Movies because I am uncultured) |
+| -------:|:--------------- | --------------------------------------:|
+|     Cat | Pizza           |                      Miss Congeniality |
+| Penguin | Chicken Nuggets |                          Love Actually |
+|  Monkey | Ice Cream       |                        Any bad rom com |
 
 
 ## Code and Syntax Highlighting
@@ -152,11 +165,13 @@ For larger code blocks where you report multiple lines of code, you always start
 1. Below, write a Python print function with a different string using syntax highlighting:
 
 <!--- Fill you answer here. --->
-
+`print('I love python')`
 2. Now write a block of Python code for that same print statement:
 
 <!--- Fill you answer here. --->
-
+``` python
+print('I love python')
+```
 
 
 ## LaTeX Equations
@@ -167,7 +182,7 @@ $$ Re_D = \frac{uD}{\nu} $$
 1. Try it on your own! Write your favorite equation using LaTeX source code and toggle the LaTeX preview to see it formatted:
 
 <!--- Fill you answer here. --->
-
+$$ y = m*x +b $$
 
 # Using Python and Running it With Hydrogen in Markdown
 
@@ -175,6 +190,8 @@ $$ Re_D = \frac{uD}{\nu} $$
 1. Below this, I've copied the code I wrote for the [Python Basics Tutorial](https://github.com/AguaClara/aguaclara_tutorial/wiki/Tutorial:-Python-Basics). You should familiarize yourself with the different Hydrogen commands using this code. For the first line, use `Hydrogen: Run` (`Cmnd + Enter`).
 2. For the second line, use `Hydrogen: Run and Move Down` (`Shift + Enter`).
 3. For the remaining code, highlight it with your cursor and use `Hydrogen: Run`. What is the difference between the three?
+
+The first one only runs one line the second runs one line and moves down and the last runs all selected lines.
 
 ```python
 from aide_design.play import*
@@ -199,40 +216,48 @@ These questions are meant to test what you've learned from the Python Basics tut
 1. Write a conditional statement with 3 conditions: when x is 10, when x is 1, and when x is anything other than 1 or 10. For each condition, have your code print what the value is or isn't.
 
 <!--- Fill you answer here. --->
+```python
+if x == 10:
+  print (10)
+elif x == 1:
+  print(1)
+else:
+  print(x)
 
+```
 
 
 
 2. Write a `for` loop that takes a variable with an initial value of 0, and adds the current index to the previous value of that variable (i.e. you variable should grow in size every iteration). Perform the iteration 20 times, and have the final value be printed at the end.
 
 <!--- Fill you answer here. --->
-
-
-
-
-
-
-
-
+```python
+x = 0
+for i in range(20):
+  x = x + i
+print(x)
+```
 
 3. Using the NumPy package, calculate the value of sin(4), and use the sigfig function from the utility module in aide_design to get your answer to 3 sig-figs. *(Hint: You will need to import these packages. Remember how to do that?)*
 
 <!--- Fill you answer here. --->
-
+```python
+x = np.sin(4)
+print(ut.sig(x,3))
+```
 
 
 4. Create a `list` of length 5, and verify the length of your list. Once you've done that, turn your `list` into an `array` and apply units of meters to it. After that, create a 5x5 `array`, extract the middle row and middle column. Verify the size of your 2D `array` and apply units of liters to it.
 
 <!--- Fill you answer here. --->
-
-
-
-
-
-
-
-
-
+```python
+x = [1,2,3,4,5]
+print(len(x))
+x= np.array(x)*u.m
+y = np.array( [ [1,2,3,4,5], [1,2,3,4,5], [1,2,3,4,5], [1,2,3,4,5], [1,2,3,4,5]] )
+z = np.array([y[:,2],y[2,:]])
+print(z)
+```
 5.  One of the most famous equations for a particle diffusing through a liquid at low Reynolds Number is the Stokes-Einstein Equation where k<sub>B</sub> is the Boltzmann constant, T is the temperature in Kelvin, eta is the dynamic viscosity in kg/(m*s), and r is the particle radius. Write a function that takes a temperature in Kelvin, a particle radius in meters, and a viscosity of water to calculate the diffusion coefficient D.
 
     Since this requires the Boltzmann Constant from SciPy, I've started the code for you with an import. Add a function call at the end of your code block and put some numbers into the inputs. Run your code with Hydrogen.
@@ -247,22 +272,33 @@ from scipy.constants import Boltzmann as kB_sc # I've imported the unitless valu
 kB = kB_sc * u.joule / u.kelvin # I've given kB units for you in J/K; you can use the kB variable to give you Boltzmann's constant with units
 
 # Write your code here
-
+def stokes_einstein(T,nu,r):
+  D = kB * T.to(u.K) / (6 * np.pi * nu * r)
+  return D
 ```
 
 6. You have a pipe with a radius of 0.2 m with water flowing in it at 2 m<sup>3</sup>/s. You want to see how the Reynolds Number changes as viscosity changes due to a change in temperature from 0 to 200<sup>o</sup>C. Create a plot of Reynolds Number against Temperature in Kelvin to show a relationship. Make sure your plot has a title and labeled axes. You can use functions from `physchem` like `pc.re_pipe` and `pc.viscosity_kinematic`. *(Hint: Make an array of temperatures to input into the `pc.viscosity_kinematic` function)*.
 
 <!--- Fill you answer here. --->
-
+```python
+r = 0.2 *u.m
+Q = 2 * u.m**3/u.s
+T = np.arange(1,200,1)*u.degC
+nu = pc.viscosity_kinematic(T)
+re = pc.re_pipe(Q,2*r, nu)
+plt.figure('ax',(10,8))
+plt.plot(nu,re,'*')
+plt.show()
+```
 # Teletype Basics
 In this section you and your team can practice using Teletype together.
 
 1. Create a portal for your team members to join. Have them write you words of  encouragement in the space below, and be sure they sign their name next to their encouragements.
 
 <!--- Fill you answer here. --->
+We can do it!!!!! Rosie Krasnoff
 
-
-
+ Stay golden-BG
 
 2. Have you other team members create a portal for you to join. In their Markdown file, write them something encouraging, and sign your name.
 
