@@ -281,6 +281,7 @@ def stokes_einstein(T,nu,r):
 
 <!--- Fill you answer here. --->
 ```python
+from aide_design.play import*
 r = 0.2 *u.m
 Q = 2 * u.m**3/u.s
 T = np.arange(1,200,1)*u.degC
@@ -288,8 +289,10 @@ nu = pc.viscosity_kinematic(T)
 re = pc.re_pipe(Q,2*r, nu)
 plt.figure('ax',(10,8))
 plt.plot(nu,re,'*')
+plt.savefig('/Users/jillianwhiting/github/Jillian-Whiting/Images/viscosity')
 plt.show()
 ```
+`![viscosity]('/Users/jillianwhiting/github/Jillian-Whiting/Images/viscosity')`
 # Teletype Basics
 In this section you and your team can practice using Teletype together.
 
