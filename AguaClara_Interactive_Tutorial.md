@@ -292,7 +292,7 @@ plt.plot(nu,re,'*')
 plt.savefig('/Users/jillianwhiting/github/Jillian-Whiting/Images/viscosity')
 plt.show()
 ```
-`![viscosity]('/Users/jillianwhiting/github/Jillian-Whiting/Images/viscosity')`
+![viscosity](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/viscosity.png?raw=true)
 # Teletype Basics
 In this section you and your team can practice using Teletype together.
 
