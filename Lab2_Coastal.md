@@ -12,12 +12,19 @@ This lab was two parts each of which tested experimental data against theoretica
 #Experimental Setup:
 A brief description of the wave tank facility, wave gauges, ADV
 accompanied by a diagram showing the experimental setup.
-
+There were two parts of the experimental set-up, the first being the wave gauges. The wave gauges send out signals which bounce off the water surface and therefore can measure distance to the surface. There was one stationary wave gauge and one on a slide as shown in the schematic below:
 ![experimental_apparatus_1](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/experimental_apparatus_1.png?raw=true)
+The wave gauge could be slid along the top of the tank until the distance between represented one wavelength because the wave gauge data lined up.
+
+The second part of the apparatus was using the ADV.The ADV measures velocity in all directions. It uses acoustics to measure velocity. Extra seeding particles needed to be added to the tank, which is not surprising as we were the first group. The ADV unlike the wave gauges is submerged in water. During the test it was submerged at four elevations below water level, 7.5 cm, 10.5 cm, 12.5 cm, 17.5 cm.
 ![experimental_apparatus_2](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/experimental_apparatus_2.png?raw=true)
 
 #Dispersion relation:
 Plots of $\frac{\sigma^{2}h}{g}$ as a function of $kh$. Two separate plots for the two different sets of amplitudes. On each plot, plot your experimental results and also the theoretical curve (as in HW1).
+
+$k = \frac{2\pi}{\lambda}$
+$\sigma = \frac{2\pi}{T}$
+
 $\frac{\sigma^{2}h}{g} = \frac{kh}{tanh^{-1}(kh)}$
 
 
@@ -60,7 +67,6 @@ plt.show()
 ![amplitude 5](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/dispersion_5.png?raw=true)
 ![amplitude 10](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/dispersion_10.png?raw=true)
 
-The points are expected to be relativity close to the predicted line. Theses are not close, but do follow the same trends. The error could be caused by measurement error from our ruler. It could also be caused by the fact that waves in the tank are reflected which can interfere with the wave gauge data.
 
 #Dispersion relation:
 Calculation of wave celerity, cp. Plots of cp/gh as a function of kh. Two separate plots for the two different sets of amplitudes. On each plot, plot your experimental results and also the theoretical curve (as in HW1).
@@ -180,7 +186,7 @@ plt.ylabel('z(m)')
 plt.savefig('/Users/jillianwhiting/github/Jillian-Whiting/Images/u_max')
 plt.show()
 ```
-
+![u_max](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/u_max.png?raw=true)
 #Water particle velocity:
 a vertical profile of maximum vertical velocity (wmax on the
 horizontal axis, z on the vertical axis). Plot the theoretical curve on the same plot.
@@ -214,13 +220,17 @@ By inspection of the local minimums and maximums, the amplitude of the maximum u
 
 ```python
 w_max = a * sigma * np.sinh(k*(h+z))/np.sinh(k*h)
+
 w_max_exp = np.array([0.2881,0.0112,0.0110])
 plt.plot(w_max,z)
 plt.plot(w_max_exp,z,'*')
 plt.title('Maximum vertical velocity')
 plt.xlabel('w max (m/s)')
 plt.ylabel('z(m)')
-plt.savefig('/Users/jillianwhiting/github/Jillian-Whiting/Images/u_max')
+plt.savefig('/Users/jillianwhiting/github/Jillian-Whiting/Images/w_max')
 plt.show()
 ```
+![w_max](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/w_max.png?raw=true)
 #Discussion of experiments and results, and comparison to theory from lectures.
+
+For the first dispersion relation part, the points are expected to be relativity close to the predicted line. Theses are not close, but do follow the same trends. The error could be caused by measurement error from our ruler. It could also be caused by the fact that waves in the tank are reflected which can interfere with the wave gauge data. There is also a possibility that when the team measured the wavelength, different multiples of wavelength were measured. The data also did not fit well to the phase velocity prediction.
