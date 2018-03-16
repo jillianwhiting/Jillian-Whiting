@@ -7,6 +7,7 @@ CEE4530 Lab 1
 
 # Introduction:
 This lab was two parts each of which tested experimental data against theoretical models. The first part was using two wave gauges to match wave data. If the wave data was overlapping from the two gauges there were a wavelength apart(or at least an integer multiple of the wavelength).The second part of the lab was using the ADV to measure the difference in velocity at different depths beneath a wave. A thing that I think was helpful from the lab was getting a physical feeling for the theoretical relationships.
+
 # Experimental Setup:
 A brief description of the wave tank facility, wave gauges, ADV
 accompanied by a diagram showing the experimental setup.
@@ -25,8 +26,11 @@ $\sigma = \frac{2\pi}{T}$
 $\frac{\sigma^{2}h}{g} = \frac{kh}{tanh^{-1}(kh)}$
 
 Stroke = 5
+
 ![amplitude 5](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/dispersion_5.png?raw=true)
+
 Stroke = 10
+
 ![amplitude 10](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/dispersion_10.png?raw=true)
 
 
@@ -37,8 +41,11 @@ $c_{p} = \sqrt{\frac{tanh(kh)}{kh}} \sqrt{gh}$
 $c_{p} = \frac{\sigma}{k}$
 
 Stroke = 5
+
 ![celerity_5 5](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/celerity_5.png?raw=true)
+
 Stroke = 10
+
 ![celerity_10](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/celerity_10.png?raw=true)
 
 # Water particle velocity (u):
