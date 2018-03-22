@@ -98,4 +98,4 @@ print(recharge*100)
 
 
 
-In the Canning aquifer, the basin is gaining water in the winter which is also the monsoon season and then the rest of the year they are not gaining any water, only losing it
+In the Canning aquifer, the basin is gaining water in the winter which is also the monsoon season and then the rest of the year they are not gaining any water because it is not raining.
