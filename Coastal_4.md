@@ -84,6 +84,8 @@ print(T_c)
 T_1_3 = h_significant(n,T_sort)
 print(T_1_3)
 ```
+Histogram of Wave data first 10 seconds
+![10s]
 |           | First 10 s | Whole Record |
 |:--------- | ---------- |:------------ |
 | $h_{rms}$ | 3.47 cm    | 3.47 cm         |
