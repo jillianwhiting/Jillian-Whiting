@@ -1,3 +1,6 @@
+####Jillian Whiting
+####jpw236
+
 ```python
 # function that we need
 from aide_design.play import*
@@ -6,8 +9,8 @@ from scipy import optimize
 
 # importing the data
 file = pd.read_csv('hw4.csv')
-time = file["Time"].values[:101]
-free_surface = file["WaveGauge"].values[:101]
+time = file["Time"].values
+free_surface = file["WaveGauge"].values
 # data frequency
 f_s = 0.1
 def zero_crossings(vector):
@@ -48,7 +51,6 @@ df.hist()
 plt.xlabel('Wave Height (cm)')
 plt.ylabel('Number of occurrences')
 plt.title('Random Wave Height Distribution')
-plt.savefig('/Users/jillianwhiting/github/Jillian-Whiting/Images/hist_all')
 plt.show()
 
 #create sorted height vector
@@ -56,12 +58,8 @@ height_sort = np.sort(wave_height)
 n = len(zero_crossings) -1
 def h_rms(n,hi):
   #calculates hrms of the sorted vector with n-1 zero crossings
-  x = 0
-  for i in range(n):
-    x = x + hi[i]**2
-  h_rms = np.sqrt(1 / n * x)
+  h_rms = np.sqrt(1 / n * np.sum(hi**2))
   return h_rms
-
 h_rms = h_rms(n,height_sort)
 print(h_rms)
 
@@ -84,17 +82,19 @@ print(T_c)
 T_1_3 = h_significant(n,T_sort)
 print(T_1_3)
 ```
-Histogram of Wave data first 10 seconds
-![10s]
+###Histogram of Wave data first 10 seconds
+![10s](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/hist_10s.png?raw=true)
+
+###Histogram of Wave data for whole records
+![10s](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/hist_all.png?raw=true)
+
 |           | First 10 s | Whole Record |
 |:--------- | ---------- |:------------ |
-| $h_{rms}$ | 3.47 cm    | 3.47 cm         |
+| $h_{rms}$ | 3.47 cm    | 3.48 cm         |
 | $h_{\frac{1}{3}}$   | 3.94 cm    | 4.75 cm         |
 | $T_{\frac{1}{3}}$   | 0.83 s     | 1.08 s         |
 | $T_{z}$   | 0.72 s     | 0.72 s        |
 | $T_{c}$   | 0.78 s     | 0.73  s       |
-
-
 
 
 ```python
@@ -103,27 +103,41 @@ freq = np.arange(.5,4,0.01)
 
 #uses equation given in homework to calculate the spectra points
 spectrum = 0.205 * (h_1_3**2) * (T_1_3**-4) * (freq**-5) * np.exp(-0.75 * ((T_1_3 * freq)**-4))
-
 #creates spectra plot
 plt.plot(freq,spectrum)
 plt.xlabel('freq (1/s)')
 plt.ylabel('energy (cm^2/s)')
 plt.title('Wave Energy Spectrum')
+plt.savefig('/Users/jillianwhiting/github/Jillian-Whiting/Images/spectra')
 plt.show()
 
 #finding the frequency of the maximum energy of the spectrum and the area under the curve
 sum = 0
 for i in range(len(spectrum)):
   if spectrum[i] == max(spectrum):
+    # finds the index and therefore frequency of maximum fo the spectra
     print(freq[i])
   sum = sum + spectrum[i]*0.01
 print(sum)
 
-np.var(wave_height)
-a_rms = np.sqrt(2*sum)
+var = np.var(wave_height)
+# very close to the area under the curve
+h_rms = 2* np.sqrt(2*sum)
 ```
+###Spectra
+![10s](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/spectra.png?raw=true)
 
 The frequency of the maximum energy occurrence is 1.06 Hz.
+
+$H_{rms} = 2.91$
+
+$H_{1/3} = 1.416 H_{rms} = 4.12$
+
+$H_{1/10} = 1.80 H_{rms} = 5.23$
+
+$H_{1/10} = 2.63 H_{rms} = 7.65$
+
+#Pressure Spectra
 
 $P =\rho g \eta\frac{cosh(k(h+z))}{cosh(kh)}$
 
@@ -169,9 +183,13 @@ plt.plot(x,h_3)
 plt.xlabel('Distance(x) (m)')
 plt.ylabel('Bathymetry(h) (m)')
 plt.legend(['Case 1','Case 2','Case 3'])
+plt.savefig('/Users/jillianwhiting/github/Jillian-Whiting/Images/bath')
 plt.show()
 ```
-Wave Rays
+##Bathymetry
+![bath](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/bath.png?raw=true)
+##Wave Rays
+
 They are uniform in the y-direction so Snell's Law is valid.
 
 $\frac{dy}{dx} = \frac{\kappa}{\sqrt{k^{2}-\kappa^{2}}}$
@@ -182,10 +200,11 @@ $\kappa = ksin\alpha$
 
 $\overline{E}^{+}c_{go} = \overline{E}^{+}c_{g1}$
 
-$a_{o}^{2}c_{go} = a_{1}^{2}c_{g1}$
+$a_{o}^{2}c_{go}b_{o}= a_{1}^{2}c_{g1}b_{1}$
 
-$a_{1}= \sqrt{\frac{a_{0}^{2}c_{g0}}{c_{g1}}}$
+$a_{1}= \sqrt{\frac{a_{0}^{2}c_{g0}}{c_{g1}}\sqrt{\frac{1-sin(\alpha_{o})}{1-sin(\alpha_{1})}}}$
 
+$a_{1}= \sqrt{\frac{a_{0}^{2}c_{g0}}{c_{g1}}\sqrt{\frac{1-sin(\alpha_{o})}{1-\frac{\kappa}{k}}}}$
 
 ```python
 #Based on our x vector definition
@@ -211,8 +230,9 @@ for i in range(len(x)-1):
   k_val = k(sigma,h)
   #solves for y position based on equations above
   y_1[i+1] = y_1[i] + kappa_1 * dx / np.sqrt(k_val**2-kappa_1**2)
-  a_1[i+1] = np.sqrt(ao**2 * cg_1 / (sigma / k_val * n(k_val,h)))
-#repeated forother cases
+  #calculates a using equation above
+  a_1[i+1] = np.sqrt(ao**2 * cg_1 / (sigma / k_val * n(k_val,h)) * np.sqrt((1 - np.sin(theta)/(1 - kappa_1/k_val))))
+#repeated for other cases
 kappa_2 = k(sigma,30)*np.sin(theta)
 a_2= np.zeros(len(x))
 a_2[0]=ao
@@ -223,7 +243,7 @@ for i in range(len(x)-1):
   h = -1*h_2[i+1]
   k_val = k(sigma,h)
   y_2[i+1] = y_2[i] + kappa_2 * dx / np.sqrt(k_val**2-kappa_2**2)
-  a_2[i+1] = np.sqrt(ao**2 * cg_2 / (sigma / k_val * n(k_val,h)))
+  a_2[i+1] = np.sqrt(ao**2 * cg_2 / (sigma / k_val * n(k_val,h)) * np.sqrt((1 - np.sin(theta)/(1 - kappa_2/k_val))))
 kappa_3 = k(sigma,10)*np.sin(theta)
 a_3= np.zeros(len(x))
 a_3[0]=ao
@@ -234,7 +254,7 @@ for i in range(len(x)-1):
   h = -1* h_3[i+1]
   k_val = k(sigma,h)
   y_3[i+1] = y_3[i] + kappa_3 * dx / np.sqrt(k_val**2-kappa_3**2)
-  a_3[i+1] = np.sqrt(ao**2 * cg_3 / (sigma / k_val * n(k_val,h)))
+  a_3[i+1] = np.sqrt(ao**2 * cg_3 / (sigma / k_val * n(k_val,h))* np.sqrt((1 - np.sin(theta)/(1 - kappa_1/k_val))))
 
 #plotting the wave rays
 plt.plot(y_1,x)
@@ -243,6 +263,7 @@ plt.plot(y_3,x)
 plt.xlabel('Along Shore Direction (m)')
 plt.ylabel('Distance From Shore (m)')
 plt.legend(['Case 1','Case 2','Case 3'])
+plt.savefig('/Users/jillianwhiting/github/Jillian-Whiting/Images/rays')
 plt.show()
 
 plt.plot(x[1:],a_1[1:])
@@ -251,7 +272,10 @@ plt.plot(x[1:],a_3[1:])
 plt.xlabel('Along Shore Direction (m)')
 plt.ylabel('Distance From Shore (m)')
 plt.legend(['Case 1','Case 2','Case 3'])
+plt.savefig('/Users/jillianwhiting/github/Jillian-Whiting/Images/amp')
 plt.show()
-
-
 ```
+![rays](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/rays.png?raw=true)
+
+##Amplitude
+![amp](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/amp.png?raw=true)
