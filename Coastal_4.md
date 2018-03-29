@@ -6,8 +6,8 @@ from scipy import optimize
 
 # importing the data
 file = pd.read_csv('hw4.csv')
-time = file["Time"].values[0:101]
-free_surface = file["WaveGauge"].values[0:101]
+time = file["Time"].values[:101]
+free_surface = file["WaveGauge"].values[:101]
 # data frequency
 f_s = 0.1
 def zero_crossings(vector):
@@ -42,13 +42,13 @@ def wave_height(vector,zero_crossings):
   return wave_height
 
 wave_height = wave_height(free_surface,zero_crossings)
-print(wave_height)
 #plotting histogram
 df = pd.DataFrame(wave_height)
 df.hist()
 plt.xlabel('Wave Height (cm)')
 plt.ylabel('Number of occurrences')
 plt.title('Random Wave Height Distribution')
+plt.savefig('/Users/jillianwhiting/github/Jillian-Whiting/Images/hist_all')
 plt.show()
 
 #create sorted height vector
@@ -83,7 +83,19 @@ print(T_c)
 #calculates T 1/3
 T_1_3 = h_significant(n,T_sort)
 print(T_1_3)
+```
+|           | First 10 s | Whole Record |
+|:--------- | ---------- |:------------ |
+| $h_{rms}$ | 3.47 cm    | 3.47 cm         |
+| $h_{\frac{1}{3}}$   | 3.94 cm    | 4.75 cm         |
+| $T_{\frac{1}{3}}$   | 0.83 s     | 1.08 s         |
+| $T_{z}$   | 0.72 s     | 0.72 s        |
+| $T_{c}$   | 0.78 s     | 0.73  s       |
 
+
+
+
+```python
 #creates frequency vector from 0.1 to 4 Hz
 freq = np.arange(.5,4,0.01)
 
